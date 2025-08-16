@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { User, Award, BarChart, CheckCircle, XCircle, MinusCircle, Edit, LogOut, Book, Bell, Settings, ArrowLeft, TrendingUp, PieChart, ClipboardPen, CalendarDays, GraduationCap, Phone, Mail, BookOpen } from 'lucide-react';
+import { User, Award, BarChart, CheckCircle, XCircle, MinusCircle, Edit, LogOut, Book, Bell, Settings, ArrowLeft, TrendingUp, PieChart, ClipboardPen, CalendarDays, GraduationCap, Phone, Mail, BookOpen, Eye } from 'lucide-react';
 
 // Mock Data for a single student (in a real app, this would come from an API)
 const mockStudentsData = [
