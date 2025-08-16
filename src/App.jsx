@@ -22,7 +22,8 @@ import RewardsBadgesPage from './pages/RewardsBadgesPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 import ManageStudentsPage from './pages/ManageStudentsPage';
 import StudentProfileViewPage from './pages/StudentProfileViewPage';
-import ManageTestsPage from './pages/ManageTestsPage'; // Import new ManageTestsPage
+import ManageTestsPage from './pages/ManageTestsPage';
+import ResultsReportsPage from './pages/ResultsReportsPage'; // Import new ResultsReportsPage
 
 const HomePage = () => (
   <div className="bg-slate-950 text-slate-200 font-sans antialiased">
@@ -62,9 +63,9 @@ function App() {
         <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
         <Route path="/admin/manage-students" element={<ManageStudentsPage />} />
         <Route path="/admin/student-profile/:id" element={<StudentProfileViewPage />} />
-        <Route path="/admin/manage-tests" element={<ManageTestsPage />} /> {/* New route for Manage Tests */}
+        <Route path="/admin/manage-tests" element={<ManageTestsPage />} />
+        <Route path="/admin/results-reports" element={<ResultsReportsPage />} /> {/* New route for Results & Reports */}
         {/* Admin sub-pages (placeholders for now) */}
-        <Route path="/admin/results-reports" element={<AdminDashboardPage />} />
         <Route path="/admin/rewards-leaderboard" element={<AdminDashboardPage />} />
         <Route path="/forgot-password" element={
             <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
