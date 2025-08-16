@@ -24,7 +24,8 @@ import ManageStudentsPage from './pages/ManageStudentsPage';
 import StudentProfileViewPage from './pages/StudentProfileViewPage';
 import ManageTestsPage from './pages/ManageTestsPage';
 import ResultsReportsPage from './pages/ResultsReportsPage';
-import RewardsLeaderboardPage from './pages/RewardsLeaderboardPage'; // Import new RewardsLeaderboardPage
+import RewardsLeaderboardPage from './pages/RewardsLeaderboardPage';
+import StudentPerformanceReportPage from './pages/StudentPerformanceReportPage'; // Import new StudentPerformanceReportPage
 
 const HomePage = () => (
   <div className="bg-slate-950 text-slate-200 font-sans antialiased">
@@ -66,7 +67,8 @@ function App() {
         <Route path="/admin/student-profile/:id" element={<StudentProfileViewPage />} />
         <Route path="/admin/manage-tests" element={<ManageTestsPage />} />
         <Route path="/admin/results-reports" element={<ResultsReportsPage />} />
-        <Route path="/admin/rewards-leaderboard" element={<RewardsLeaderboardPage />} /> {/* New route for Rewards & Leaderboard */}
+        <Route path="/admin/rewards-leaderboard" element={<RewardsLeaderboardPage />} />
+        <Route path="/admin/student-performance/:id" element={<StudentPerformanceReportPage />} /> {/* New route for Student Performance Report */}
         <Route path="/forgot-password" element={
             <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
                 <Header />

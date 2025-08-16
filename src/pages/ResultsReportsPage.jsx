@@ -21,7 +21,7 @@ const mockResults = [
     { id: 1, studentName: "Anusha Sharma", class: "Class 6", testName: "Reasoning - Pattern Recognition", score: 92, rank: 1, status: "Passed", date: "2024-08-15" },
     { id: 2, studentName: "Rahul Verma", class: "Class 6", testName: "Maths - Basic Arithmetic", score: 85, rank: 3, status: "Passed", date: "2024-08-14" },
     { id: 3, studentName: "Priya Singh", class: "Class 7", testName: "Drawing - Figure Completion", score: 78, rank: 5, status: "Passed", date: "2024-08-13" },
-    { id: 4, student: "Amit Kumar", class: "Class 6", testName: "Language - Story Comprehension", score: 60, rank: 10, status: "Failed", date: "2024-08-12" },
+    { id: 4, studentName: "Amit Kumar", class: "Class 6", testName: "Language - Story Comprehension", score: 60, rank: 10, status: "Failed", date: "2024-08-12" },
     { id: 5, studentName: "Sneha Reddy", class: "Class 7", testName: "Reasoning - Series Completion", score: 95, rank: 2, status: "Passed", date: "2024-08-11" },
     { id: 6, studentName: "Vikram Yadav", class: "Class 6", testName: "Maths - Advanced Algebra", score: 70, rank: 8, status: "Passed", date: "2024-08-10" },
     { id: 7, studentName: "Divya Patel", class: "Class 8", testName: "Reasoning - Pattern Recognition", score: 88, rank: 4, status: "Passed", date: "2024-08-09" },
@@ -229,10 +229,8 @@ const ResultsReportsPage = () => {
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center">
-                                                        <div className="flex items-center justify-center space-x-3">
-                                                            <Link to={`/admin/student-performance/${result.id}`} className="text-purple-400 hover:text-purple-300" title="View Detailed Report"><Eye size={18} /></Link>
-                                                            <button onClick={handleDownloadPDF} className="text-yellow-400 hover:text-yellow-300" title="Download PDF"><Download size={18} /></button>
-                                                        </div>
+                                                        <Link to={`/admin/student-performance/${result.id}`} className="text-purple-400 hover:text-purple-300" title="View Detailed Report"><Eye size={18} /></Link>
+                                                        <button onClick={handleDownloadPDF} className="text-yellow-400 hover:text-yellow-300" title="Download PDF"><Download size={18} /></button>
                                                     </td>
                                                 </tr>
                                             ))
