@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award, Brain, ClipboardList, SquarePen } from 'lucide-react'; // Added SquarePen icon
+import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award, Brain, ClipboardList, SquarePen } from 'lucide-react';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +32,7 @@ const Header = () => {
         { name: "Manage Tests", href: "/admin/manage-tests", icon: <BookOpen size={18} className="mr-2" /> },
         { name: "AI Test Gen", href: "/admin/ai-test-generation", icon: <Brain size={18} className="mr-2" /> },
         { name: "AI Test Templates", href: "/admin/ai-test-templates", icon: <ClipboardList size={18} className="mr-2" /> },
-        { name: "Manual Test Creation", href: "/admin/manual-test-creation", icon: <SquarePen size={18} className="mr-2" /> }, {/* New link */}
+        { name: "Manual Test Creation", href: "/admin/manual-test-creation", icon: <SquarePen size={18} className="mr-2" /> },
         { name: "Results & Reports", href: "/admin/results-reports", icon: <BarChart size={18} className="mr-2" /> },
         { name: "Rewards & Leaderboard", href: "/admin/rewards-leaderboard", icon: <Award size={18} className="mr-2" /> },
     ] : isStudentDashboard ? [
@@ -61,7 +61,7 @@ const Header = () => {
                     <div className="hidden md:flex md:items-center md:space-x-8">
                         {navLinks.map(link => (
                             <Link key={link.name} to={link.href} className="text-slate-300 hover:text-cyan-400 transition-colors duration-200 flex items-center">
-                                {link.icon && link.icon} {/* Render icon if available */}
+                                {link.icon && link.icon}
                                 {link.name}
                             </Link>
                         ))}
