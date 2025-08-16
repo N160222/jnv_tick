@@ -186,7 +186,7 @@ const ManageStudentsPage = () => {
             setStudents(prev => prev.map(s => s.id === newStudentData.id ? newStudentData : s));
         } else {
             // Add new student
-            const newId = Math.max(...prev.map(s => s.id), 0) + 1; // Generate new ID
+            const newId = Math.max(...students.map(s => s.id), 0) + 1; // Generate new ID
             setStudents(prev => [...prev, { ...newStudentData, id: newId }]);
         }
     };
@@ -291,8 +291,8 @@ const ManageStudentsPage = () => {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-800">
-                                        {filteredTests.length > 0 ? (
-                                            filteredTests.map((student, index) => (
+                                        {filteredStudents.length > 0 ? (
+                                            filteredStudents.map((student, index) => (
                                                 <tr key={student.id} className="bg-slate-900/30 hover:bg-slate-800/50 transition-colors" style={{ animationDelay: `${index * 50}ms` }}>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white flex items-center">
                                                         <img src={student.avatar} alt={student.name} className="w-8 h-8 rounded-full mr-3" />
@@ -325,8 +325,8 @@ const ManageStudentsPage = () => {
                             </div>
                         ) : (
                             <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-                                {filteredTests.length > 0 ? (
-                                    filteredTests.map((student, index) => (
+                                {filteredStudents.length > 0 ? (
+                                    filteredStudents.map((student, index) => (
                                         <div key={student.id} className="glass-effect rounded-xl p-4 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg" style={{ animationDelay: `${index * 50}ms` }}>
                                             <div className="flex items-center mb-3">
                                                 <img src={student.avatar} alt={student.name} className="w-12 h-12 rounded-full mr-4 border-2 border-cyan-500" />
@@ -362,7 +362,7 @@ const ManageStudentsPage = () => {
                         )}
 
                         {/* Pagination (Mocked) */}
-                        {filteredTests.length > 5 && (
+                        {filteredStudents.length > 5 && (
                             <div className="mt-12 text-center animate-fade-in-up" style={{ animationDelay: '600ms' }}>
                                 <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold rounded-lg shadow-lg hover:shadow-purple-500/50 transform hover:scale-105 transition-all duration-300">
                                     Load More Students
