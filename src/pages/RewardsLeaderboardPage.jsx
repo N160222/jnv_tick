@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Trophy, Crown, Filter, ChevronDown, Search, Award, Gift, Coins, TrendingUp, CheckCircle, X, Settings } from 'lucide-react';
+import { Trophy, Crown, Filter, ChevronDown, Search, Award, Gift, Coins, TrendingUp, CheckCircle, X, Settings, Download } from 'lucide-react';
 
 // Mock Data for Leaderboard
 const mockLeaderboardData = [
