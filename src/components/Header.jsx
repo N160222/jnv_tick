@@ -34,7 +34,7 @@ const Header = () => {
         { name: "AI Test Templates", href: "/admin/ai-test-templates", icon: <ClipboardList size={18} className="mr-2" /> },
         { name: "Manual Test Creation", href: "/admin/manual-test-creation", icon: <SquarePen size={18} className="mr-2" /> },
         { name: "Question Bank", href: "/admin/question-bank", icon: <ListChecks size={18} className="mr-2" /> },
-        { name: "Student Reports & Performance", href: "/admin/student-reports-performance", icon: <TrendingUp size={18} className="mr-2" /> }, {/* New link */}
+        { name: "Student Reports & Performance", href: "/admin/student-reports-performance", icon: <TrendingUp size={18} className="mr-2" /> },
         { name: "Results & Reports", href: "/admin/results-reports", icon: <BarChart size={18} className="mr-2" /> },
         { name: "Rewards & Leaderboard", href: "/admin/rewards-leaderboard", icon: <Award size={18} className="mr-2" /> },
     ] : isStudentDashboard ? [
