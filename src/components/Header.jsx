@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award, Brain } from 'lucide-react'; // Added Brain icon
+import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award, Brain, ClipboardList } from 'lucide-react'; // Added ClipboardList icon
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,8 @@ const Header = () => {
         { name: "Dashboard", href: "/admin-dashboard", icon: <LayoutDashboard size={18} className="mr-2" /> },
         { name: "Manage Students", href: "/admin/manage-students", icon: <Users size={18} className="mr-2" /> },
         { name: "Manage Tests", href: "/admin/manage-tests", icon: <BookOpen size={18} className="mr-2" /> },
-        { name: "AI Test Gen", href: "/admin/ai-test-generation", icon: <Brain size={18} className="mr-2" /> }, // New link
+        { name: "AI Test Gen", href: "/admin/ai-test-generation", icon: <Brain size={18} className="mr-2" /> },
+        { name: "AI Test Templates", href: "/admin/ai-test-templates", icon: <ClipboardList size={18} className="mr-2" /> }, // New link
         { name: "Results & Reports", href: "/admin/results-reports", icon: <BarChart size={18} className="mr-2" /> },
         { name: "Rewards & Leaderboard", href: "/admin/rewards-leaderboard", icon: <Award size={18} className="mr-2" /> },
     ] : isStudentDashboard ? [

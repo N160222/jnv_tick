@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom'; // Import useLocation
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Brain, BookOpen, SlidersHorizontal, PlusCircle, Save, ArrowLeft, FileText, Loader, CheckCircle, XCircle } from 'lucide-react';
 
 const AITestGenerationPage = () => {
     const navigate = useNavigate();
+    const location = useLocation(); // Use useLocation hook
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [selectedDifficulty, setSelectedDifficulty] = useState('Medium');
     const [numQuestions, setNumQuestions] = useState(20);
@@ -26,6 +27,18 @@ const AITestGenerationPage = () => {
         handleResize();
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    // Effect to pre-fill form if templateData is passed via location state
+    useEffect(() => {
+        if (location.state?.templateData) {
+            const { subjects, difficulty, numQuestions } = location.state.templateData;
+            setSelectedSubjects(subjects || []);
+            setSelectedDifficulty(difficulty || 'Medium');
+            setNumQuestions(numQuestions || 20);
+            // Clear the state so it doesn't persist on refresh/back
+            navigate(location.pathname, { replace: true, state: {} });
+        }
+    }, [location.state]); // Depend on location.state
 
     const handleSubjectChange = (subject) => {
         setSelectedSubjects(prev =>
@@ -241,10 +254,10 @@ const AITestGenerationPage = () => {
             {/* Action Buttons */}
             <div className="sticky bottom-0 z-20 w-full bg-slate-950/90 backdrop-blur-lg border-t border-slate-800 py-4 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-center gap-4">
                 <Link
-                    to="/admin-dashboard"
+                    to="/admin/ai-test-templates"
                     className="w-full sm:w-auto text-center px-8 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-600 transition-colors duration-200 flex items-center justify-center"
                 >
-                    <ArrowLeft size={20} className="mr-2" /> Back to Admin Dashboard
+                    <ArrowLeft size={20} className="mr-2" /> Back to AI Test Templates
                 </Link>
                 <Link
                     to="/admin/manage-tests"

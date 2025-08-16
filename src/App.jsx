@@ -26,7 +26,8 @@ import ManageTestsPage from './pages/ManageTestsPage';
 import ResultsReportsPage from './pages/ResultsReportsPage';
 import RewardsLeaderboardPage from './pages/RewardsLeaderboardPage';
 import StudentPerformanceReportPage from './pages/StudentPerformanceReportPage';
-import AITestGenerationPage from './pages/AITestGenerationPage'; // Import new AI Test Generation Page
+import AITestGenerationPage from './pages/AITestGenerationPage';
+import AITestTemplatesPage from './pages/AITestTemplatesPage'; // Import new AI Test Templates Page
 
 const HomePage = () => (
   <div className="bg-slate-950 text-slate-200 font-sans antialiased">
@@ -70,7 +71,8 @@ function App() {
         <Route path="/admin/results-reports" element={<ResultsReportsPage />} />
         <Route path="/admin/rewards-leaderboard" element={<RewardsLeaderboardPage />} />
         <Route path="/admin/student-performance/:id" element={<StudentPerformanceReportPage />} />
-        <Route path="/admin/ai-test-generation" element={<AITestGenerationPage />} /> {/* New route */}
+        <Route path="/admin/ai-test-generation" element={<AITestGenerationPage />} />
+        <Route path="/admin/ai-test-templates" element={<AITestTemplatesPage />} /> {/* New route */}
         <Route path="/forgot-password" element={
             <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
                 <Header />
