@@ -135,8 +135,10 @@ const LeaderboardPage = () => {
                                                 {index + 4} {/* Ranks start from 4 after top 3 */}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-300 flex items-center">
-                                                <img src={student.avatar} alt={student.name} className="w-8 h-8 rounded-full mr-3" />
-                                                {student.name}
+                                                <Link to="/profile" className="flex items-center group">
+                                                    <img src={student.avatar} alt={student.name} className="w-8 h-8 rounded-full mr-3" />
+                                                    <span className="group-hover:text-cyan-400 transition-colors">{student.name}</span>
+                                                </Link>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-white font-semibold">{student.score}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-white font-semibold">{student.accuracy}%</td>
