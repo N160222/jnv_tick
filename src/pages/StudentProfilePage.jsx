@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { User, Award, BarChart, CheckCircle, XCircle, MinusCircle, Edit, LogOut, Book } from 'lucide-react';
+import { User, Award, BarChart, CheckCircle, XCircle, MinusCircle, Edit, LogOut, Book, Bell } from 'lucide-react'; // Import Bell
 
 // Mock Data
 const mockStudent = {
@@ -117,6 +117,10 @@ const StudentProfilePage = () => {
                                     <Edit size={18} className="mr-2" /> Edit Profile
                                 </button>
                             </div>
+                            <Link to="/notifications" className="sm:self-start relative px-4 py-2 bg-slate-700 text-white font-semibold rounded-md hover:bg-slate-600 transition-colors flex items-center justify-center">
+                                <Bell size={18} className="mr-2" /> Notifications
+                                <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full animate-ping-slow"></span>
+                            </Link>
                             <button
                                 onClick={handleLogout}
                                 className="sm:self-start px-4 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition-colors flex items-center justify-center"
