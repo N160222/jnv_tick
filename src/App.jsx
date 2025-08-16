@@ -16,7 +16,8 @@ import ReviewAnswersPage from './pages/ReviewAnswersPage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import StudentProfilePage from './pages/StudentProfilePage';
 import NotificationsPage from './pages/NotificationsPage';
-import SettingsPage from './pages/SettingsPage'; // Import the new page
+import SettingsPage from './pages/SettingsPage';
+import HelpSupportPage from './pages/HelpSupportPage'; // Import the new page
 
 const HomePage = () => (
   <div className="bg-slate-950 text-slate-200 font-sans antialiased">
@@ -50,7 +51,8 @@ function App() {
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route path="/profile" element={<StudentProfilePage />} />
         <Route path="/notifications" element={<NotificationsPage />} />
-        <Route path="/settings" element={<SettingsPage />} /> {/* New route for settings */}
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/help-support" element={<HelpSupportPage />} /> {/* New route for help & support */}
         <Route path="/forgot-password" element={
             <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
                 <Header />
