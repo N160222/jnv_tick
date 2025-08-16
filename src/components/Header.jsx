@@ -58,8 +58,8 @@ const Header = () => {
                             Navodaya <span className="text-cyan-400">AI</span> Prep
                         </h1>
                     </Link>
-                    <div className="hidden md:flex items-center flex-grow gap-x-4"> {/* Changed justify-between to gap-x-4 */}
-                        <div className="flex flex-1 space-x-6 overflow-x-auto pb-2 custom-scrollbar min-w-0"> {/* Added flex-1 and min-w-0 */}
+                    <div className="hidden md:flex items-center flex-grow justify-start gap-x-4"> {/* Changed justify-between to justify-start */}
+                        <div className="flex flex-auto space-x-6 overflow-x-auto pb-2 custom-scrollbar min-w-0"> {/* Changed flex-1 to flex-auto */}
                             {navLinks.map(link => (
                                 <Link key={link.name} to={link.href} className="flex-shrink-0 text-slate-300 hover:text-cyan-400 transition-colors duration-200 flex items-center whitespace-nowrap">
                                     {link.icon && link.icon}
@@ -67,7 +67,7 @@ const Header = () => {
                                 </Link>
                             ))}
                         </div>
-                        <div className="flex items-center space-x-4 flex-shrink-0"> {/* Removed ml-4 as gap-x handles it */}
+                        <div className="flex items-center space-x-4 flex-shrink-0">
                             {!isStudentDashboard && !isAdminPath ? (
                                 <>
                                     <div className="relative group">
