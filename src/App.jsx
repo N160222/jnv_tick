@@ -19,7 +19,9 @@ import NotificationsPage from './pages/NotificationsPage';
 import SettingsPage from './pages/SettingsPage';
 import HelpSupportPage from './pages/HelpSupportPage';
 import RewardsBadgesPage from './pages/RewardsBadgesPage';
-import AdminDashboardPage from './pages/AdminDashboardPage'; // Import the new Admin Dashboard page
+import AdminDashboardPage from './pages/AdminDashboardPage';
+import ManageStudentsPage from './pages/ManageStudentsPage'; // Import new ManageStudentsPage
+import StudentProfileViewPage from './pages/StudentProfileViewPage'; // Import new StudentProfileViewPage
 
 const HomePage = () => (
   <div className="bg-slate-950 text-slate-200 font-sans antialiased">
@@ -56,9 +58,10 @@ function App() {
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/help-support" element={<HelpSupportPage />} />
         <Route path="/rewards-badges" element={<RewardsBadgesPage />} />
-        <Route path="/admin-dashboard" element={<AdminDashboardPage />} /> {/* New route for Admin Dashboard */}
+        <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
+        <Route path="/admin/manage-students" element={<ManageStudentsPage />} /> {/* New route for Manage Students */}
+        <Route path="/admin/student-profile/:id" element={<StudentProfileViewPage />} /> {/* New route for Student Profile View */}
         {/* Admin sub-pages (placeholders for now) */}
-        <Route path="/admin/manage-students" element={<AdminDashboardPage />} />
         <Route path="/admin/manage-tests" element={<AdminDashboardPage />} />
         <Route path="/admin/results-reports" element={<AdminDashboardPage />} />
         <Route path="/admin/rewards-leaderboard" element={<AdminDashboardPage />} />
