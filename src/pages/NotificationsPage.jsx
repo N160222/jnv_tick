@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { BellRing, Award, Mail, Zap, Bell, X, Info, CalendarDays, CheckCircle } from 'lucide-react'; // Import necessary icons
+import { BellRing, Award, Mail, Zap, Bell, X, Info, CalendarDays, CheckCircle, Paperclip } from 'lucide-react'; // Import necessary icons
 
 // Mock Data for notifications (aligned with admin announcements)
 const mockNotifications = [
