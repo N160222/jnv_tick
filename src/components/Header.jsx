@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award, Brain, ClipboardList, SquarePen, ListChecks, TrendingUp, Activity } from 'lucide-react';
+import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award, Brain, ClipboardList, SquarePen, ListChecks, TrendingUp, Activity, Scale } from 'lucide-react';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +35,7 @@ const Header = () => {
         { name: "Results & Reports", href: "/admin/results-reports", icon: <BarChart size={18} className="mr-2" /> },
         { name: "Rewards & Leaderboard", href: "/admin/rewards-leaderboard", icon: <Award size={18} className="mr-2" /> },
         { name: "Analytics Dashboard", href: "/admin/analytics-dashboard", icon: <Activity size={18} className="mr-2" /> },
+        { name: "Student Comparison", href: "/admin/student-comparison", icon: <Scale size={18} className="mr-2" /> }, // New link
     ];
 
     const studentNavLinks = [
@@ -51,7 +52,7 @@ const Header = () => {
         { name: "About", href: "/about" },
         { name: "Pricing", href: "/pricing" },
         { name: "Contact", href: "/contact" },
-        { name: "Admin Dashboard", href: "/admin-dashboard" }, // Added Admin Dashboard link
+        { name: "Admin Dashboard", href: "/admin-dashboard" },
     ];
 
     const currentNavLinks = isAdminPath ? adminNavLinks : (isStudentDashboard ? studentNavLinks : publicNavLinks);
