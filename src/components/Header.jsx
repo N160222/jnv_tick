@@ -51,6 +51,7 @@ const Header = () => {
         { name: "About", href: "/about" },
         { name: "Pricing", href: "/pricing" },
         { name: "Contact", href: "/contact" },
+        { name: "Admin Dashboard", href: "/admin-dashboard" }, // Added Admin Dashboard link
     ];
 
     const currentNavLinks = isAdminPath ? adminNavLinks : (isStudentDashboard ? studentNavLinks : publicNavLinks);
@@ -122,6 +123,10 @@ const Header = () => {
                                         </div>
                                     </div>
                                 </>
+                            ) : isAdminPath ? (
+                                <button onClick={() => alert('Admin Logging out...')} className="px-4 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition-colors flex items-center">
+                                    <LogOut size={18} className="mr-2" /> Logout
+                                </button>
                             ) : null}
                         </div>
                     </div>
@@ -142,11 +147,6 @@ const Header = () => {
                                     {link.name}
                                 </Link>
                             ))}
-                            {!isStudentDashboard && !isAdminPath && (
-                                <Link to="/admin-dashboard" className="text-slate-300 hover:text-cyan-400 transition-colors duration-200 block px-2 py-1 flex items-center">
-                                    Admin Dashboard
-                                </Link>
-                            )}
                             <div className="border-t border-slate-800 pt-4 flex flex-col space-y-4">
                             {isStudentDashboard ? (
                                 <>
@@ -167,6 +167,7 @@ const Header = () => {
                                 </button>
                             ) : (
                                 <>
+                                    <button onClick={toggleLanguage} className="w-full text-left border border-slate-600 px-3 py-1.5 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">{language === 'EN' ? 'Telugu' : 'English'}</button>
                                     <Link to="/auth" className="text-slate-300 hover:text-white">Login</Link>
                                     <Link to="/auth" className="w-full text-center px-4 py-2 bg-cyan-500 text-slate-900 font-semibold rounded-md hover:bg-cyan-400 transition-all duration-200">Sign Up</Link>
                                 </>
