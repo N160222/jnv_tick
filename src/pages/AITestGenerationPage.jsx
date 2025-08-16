@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Brain, BookOpen, SlidersHorizontal, PlusCircle, Save, ArrowLeft, Robot, FileText, Loader, CheckCircle, XCircle } from 'lucide-react';
+import { Brain, BookOpen, SlidersHorizontal, PlusCircle, Save, ArrowLeft, FileText, Loader, CheckCircle, XCircle } from 'lucide-react';
 
 const AITestGenerationPage = () => {
     const navigate = useNavigate();
@@ -90,7 +90,7 @@ const AITestGenerationPage = () => {
             {isDesktop && (
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 flex items-center justify-center z-0 opacity-20 animate-pulse-slow">
                     <div className="relative w-full h-full">
-                        <Robot size={128} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-cyan-400 animate-spin-slow" style={{ animationDuration: '15s' }} />
+                        <Brain size={128} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-cyan-400 animate-spin-slow" style={{ animationDuration: '15s' }} />
                         {/* Floating test papers effect */}
                         <FileText size={48} className="absolute top-1/4 left-1/4 text-blue-500 animate-float-1" />
                         <FileText size={36} className="absolute bottom-1/4 right-1/4 text-purple-500 animate-float-2" />
