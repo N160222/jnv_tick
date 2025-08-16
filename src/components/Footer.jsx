@@ -36,7 +36,7 @@ const Footer = ({ minimal }) => {
                                 <li><Link to="/about" className="text-slate-400 hover:text-cyan-400">About Us</Link></li>
                                 <li><Link to="/pricing" className="text-slate-400 hover:text-cyan-400">Pricing</Link></li>
                                 <li><Link to="/contact" className="text-slate-400 hover:text-cyan-400">Contact</Link></li>
-                                <li><Link to="/help-support" className="text-slate-400 hover:text-cyan-400">Help</Link></li> {/* Added Help link */}
+                                <li><Link to="/help-support" className="text-slate-400 hover:text-cyan-400">Help</Link></li>
                                 <li><Link to="/auth" className="text-slate-400 hover:text-cyan-400">Login</Link></li>
                             </ul>
                         </div>

@@ -8,7 +8,7 @@ const Header = () => {
     const [language, setLanguage] = useState('EN');
     const location = useLocation();
 
-    const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/profile') || location.pathname.startsWith('/mock-tests') || location.pathname.startsWith('/test-interface') || location.pathname.startsWith('/results') || location.pathname.startsWith('/review-answers') || location.pathname.startsWith('/leaderboard') || location.pathname.startsWith('/notifications') || location.pathname.startsWith('/settings') || location.pathname.startsWith('/help-support'); // Added /help-support
+    const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/profile') || location.pathname.startsWith('/mock-tests') || location.pathname.startsWith('/test-interface') || location.pathname.startsWith('/results') || location.pathname.startsWith('/review-answers') || location.pathname.startsWith('/leaderboard') || location.pathname.startsWith('/notifications') || location.pathname.startsWith('/settings') || location.pathname.startsWith('/help-support') || location.pathname.startsWith('/rewards-badges'); // Added /rewards-badges
 
     useEffect(() => {
         const handleScroll = () => {
@@ -27,7 +27,8 @@ const Header = () => {
         { name: "Study Plan", href: "/study-plan" },
         { name: "Leaderboard", href: "/leaderboard" },
         { name: "AI Tutor", href: "/ai-tutor" },
-        { name: "Help & Support", href: "/help-support" }, // Added Help & Support link
+        { name: "Help & Support", href: "/help-support" },
+        { name: "Rewards & Badges", href: "/rewards-badges" }, // Added Rewards & Badges link
     ] : [
         { name: "Home", href: "/" },
         { name: "About", href: "/about" },
