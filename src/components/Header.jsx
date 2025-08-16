@@ -64,7 +64,23 @@ const Header = () => {
                         ))}
                     </div>
                     <div className="hidden md:flex items-center space-x-4">
-                        {!isStudentDashboard && !isAdminPath && <button onClick={toggleLanguage} className="border border-slate-600 px-3 py-1.5 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">{language === 'EN' ? 'Telugu' : 'English'}</button>}
+                        {!isStudentDashboard && !isAdminPath && (
+                            <>
+                                {/* Admin Dropdown */}
+                                <div className="relative group">
+                                    <button className="flex items-center space-x-1 text-slate-300 hover:text-cyan-400 transition-colors duration-200 focus:outline-none">
+                                        <span>Admin</span>
+                                        <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                                    </button>
+                                    <div className="absolute right-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right scale-95 group-hover:scale-100">
+                                        <Link to="/admin-dashboard" className="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-white">Admin Dashboard</Link>
+                                    </div>
+                                </div>
+                                <button onClick={toggleLanguage} className="border border-slate-600 px-3 py-1.5 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">{language === 'EN' ? 'Telugu' : 'English'}</button>
+                                <Link to="/auth" className="text-slate-300 hover:text-white transition-colors">Login</Link>
+                                <Link to="/auth" className="px-4 py-2 bg-cyan-500 text-slate-900 font-semibold rounded-md hover:bg-cyan-400 transition-all duration-200 transform hover:scale-105">Sign Up</Link>
+                            </>
+                        )}
                         {isStudentDashboard && (
                              <>
                                 <Link to="/notifications" className="relative text-slate-300 hover:text-white transition-colors">
@@ -92,12 +108,6 @@ const Header = () => {
                                 <LogOut size={18} className="mr-2" /> Logout
                             </button>
                         )}
-                        {!isStudentDashboard && !isAdminPath && (
-                            <>
-                                <Link to="/auth" className="text-slate-300 hover:text-white transition-colors">Login</Link>
-                                <Link to="/auth" className="px-4 py-2 bg-cyan-500 text-slate-900 font-semibold rounded-md hover:bg-cyan-400 transition-all duration-200 transform hover:scale-105">Sign Up</Link>
-                            </>
-                        )}
                     </div>
                     <div className="md:hidden flex items-center">
                         <button onClick={() => setIsOpen(!isOpen)} className="text-slate-300 hover:text-white focus:outline-none">
@@ -116,6 +126,12 @@ const Header = () => {
                                     {link.name}
                                 </Link>
                             ))}
+                            {/* Add Admin Dashboard link for mobile when not in admin/student dashboard */}
+                            {!isStudentDashboard && !isAdminPath && (
+                                <Link to="/admin-dashboard" className="text-slate-300 hover:text-cyan-400 transition-colors duration-200 block px-2 py-1 flex items-center">
+                                    Admin Dashboard
+                                </Link>
+                            )}
                             <div className="border-t border-slate-800 pt-4 flex flex-col space-y-4">
                             {isStudentDashboard ? (
                                 <>
