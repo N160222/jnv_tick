@@ -9,7 +9,8 @@ import CTA from './components/CTA';
 import Footer from './components/Footer';
 import AuthPage from './pages/AuthPage';
 import StudentDashboard from './pages/StudentDashboard';
-import MockTestListPage from './pages/MockTestListPage'; // Import the new page
+import MockTestListPage from './pages/MockTestListPage';
+import TestTakingInterface from './pages/TestTakingInterface'; // Import the new page
 
 const HomePage = () => (
   <div className="bg-slate-950 text-slate-200 font-sans antialiased">
@@ -36,19 +37,8 @@ function App() {
         <Route path="/contact" element={<HomePage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/dashboard" element={<StudentDashboard />} />
-        <Route path="/mock-tests" element={<MockTestListPage />} /> {/* New route for mock tests */}
-        <Route path="/test-interface" element={
-            <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
-                <Header />
-                <div className="flex-grow flex items-center justify-center">
-                    <div className="text-center">
-                        <h1 className="text-4xl font-bold mb-4">Test Taking Interface Coming Soon</h1>
-                        <p className="text-slate-400">This page will be built in the next step.</p>
-                    </div>
-                </div>
-                <Footer />
-            </div>
-        } />
+        <Route path="/mock-tests" element={<MockTestListPage />} />
+        <Route path="/test-interface" element={<TestTakingInterface />} /> {/* New route for test interface */}
         <Route path="/forgot-password" element={
             <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
                 <Header />
@@ -56,6 +46,18 @@ function App() {
                     <div className="text-center">
                         <h1 className="text-4xl font-bold mb-4">Coming Soon</h1>
                         <p className="text-slate-400">The forgot password page is under construction.</p>
+                    </div>
+                </div>
+                <Footer />
+            </div>
+        } />
+        <Route path="/results" element={
+            <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
+                <Header />
+                <div className="flex-grow flex items-center justify-center">
+                    <div className="text-center">
+                        <h1 className="text-4xl font-bold mb-4">Results Page Coming Soon</h1>
+                        <p className="text-slate-400">This page will be built in the next step.</p>
                     </div>
                 </div>
                 <Footer />
