@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { User, Award, BarChart, CheckCircle, XCircle, MinusCircle, Edit, LogOut } from 'lucide-react';
+import { User, Award, BarChart, CheckCircle, XCircle, MinusCircle, Edit, LogOut, Book } from 'lucide-react';
 
 // Mock Data
 const mockStudent = {
