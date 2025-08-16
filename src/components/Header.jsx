@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LogOut, Bell } from 'lucide-react'; // Import Bell icon
+import { LogOut, Bell, Settings } from 'lucide-react'; // Import Settings icon
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +8,7 @@ const Header = () => {
     const [language, setLanguage] = useState('EN');
     const location = useLocation();
 
-    const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/profile') || location.pathname.startsWith('/mock-tests') || location.pathname.startsWith('/test-interface') || location.pathname.startsWith('/results') || location.pathname.startsWith('/review-answers') || location.pathname.startsWith('/leaderboard') || location.pathname.startsWith('/notifications'); // Added /notifications
+    const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/profile') || location.pathname.startsWith('/mock-tests') || location.pathname.startsWith('/test-interface') || location.pathname.startsWith('/results') || location.pathname.startsWith('/review-answers') || location.pathname.startsWith('/leaderboard') || location.pathname.startsWith('/notifications') || location.pathname.startsWith('/settings'); // Added /settings
 
     useEffect(() => {
         const handleScroll = () => {
@@ -59,6 +59,9 @@ const Header = () => {
                                     {/* Static unread indicator */}
                                     <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full animate-ping-slow"></span>
                                 </Link>
+                                <Link to="/settings" className="text-slate-300 hover:text-white transition-colors">
+                                    <Settings size={24} />
+                                </Link>
                                 <div className="relative group">
                                     <button className="flex items-center space-x-2 focus:outline-none">
                                         <img className="h-8 w-8 rounded-full" src="https://i.pravatar.cc/40" alt="User avatar" />
@@ -102,6 +105,9 @@ const Header = () => {
                                     <Link to="/notifications" className="text-slate-300 hover:text-white flex items-center px-2 py-1">
                                         <Bell size={18} className="mr-2" /> Notifications
                                         <span className="ml-2 h-2 w-2 bg-red-500 rounded-full animate-ping-slow"></span>
+                                    </Link>
+                                    <Link to="/settings" className="text-slate-300 hover:text-white flex items-center px-2 py-1">
+                                        <Settings size={18} className="mr-2" /> Settings
                                     </Link>
                                     <Link to="/profile" className="text-slate-300 hover:text-white">My Account</Link>
                                     <button onClick={() => alert('Logging out...')} className="w-full text-left text-slate-300 hover:text-white flex items-center px-2 py-1">

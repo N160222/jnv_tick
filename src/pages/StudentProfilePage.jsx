@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { User, Award, BarChart, CheckCircle, XCircle, MinusCircle, Edit, LogOut, Book, Bell } from 'lucide-react'; // Import Bell
+import { User, Award, BarChart, CheckCircle, XCircle, MinusCircle, Edit, LogOut, Book, Bell, Settings } from 'lucide-react'; // Import Settings
 
 // Mock Data
 const mockStudent = {
@@ -76,7 +76,8 @@ const StudentProfilePage = () => {
     }, []);
 
     const handleEditProfile = () => {
-        setShowEditProfileModal(true);
+        // This button now navigates to the settings page
+        navigate('/settings');
     };
 
     const handleLogout = () => {
@@ -114,7 +115,7 @@ const StudentProfilePage = () => {
                                     onClick={handleEditProfile}
                                     className="mt-4 px-4 py-2 bg-slate-700 text-white font-semibold rounded-md hover:bg-slate-600 transition-colors flex items-center justify-center mx-auto sm:mx-0"
                                 >
-                                    <Edit size={18} className="mr-2" /> Edit Profile
+                                    <Settings size={18} className="mr-2" /> Edit Settings
                                 </button>
                             </div>
                             <Link to="/notifications" className="sm:self-start relative px-4 py-2 bg-slate-700 text-white font-semibold rounded-md hover:bg-slate-600 transition-colors flex items-center justify-center">
