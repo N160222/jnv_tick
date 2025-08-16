@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award, Brain, ClipboardList, SquarePen, ListChecks, TrendingUp, Activity, Scale } from 'lucide-react';
+import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award, Brain, ClipboardList, SquarePen, ListChecks, TrendingUp, Activity, Scale, BellRing } from 'lucide-react';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +35,8 @@ const Header = () => {
         { name: "Results & Reports", href: "/admin/results-reports", icon: <BarChart size={18} className="mr-2" /> },
         { name: "Rewards & Leaderboard", href: "/admin/rewards-leaderboard", icon: <Award size={18} className="mr-2" /> },
         { name: "Analytics Dashboard", href: "/admin/analytics-dashboard", icon: <Activity size={18} className="mr-2" /> },
-        { name: "Student Comparison", href: "/admin/student-comparison", icon: <Scale size={18} className="mr-2" /> }, // New link
+        { name: "Student Comparison", href: "/admin/student-comparison", icon: <Scale size={18} className="mr-2" /> },
+        { name: "Notifications & Announcements", href: "/admin/notifications-announcements", icon: <BellRing size={18} className="mr-2" /> }, // New link
     ];
 
     const studentNavLinks = [

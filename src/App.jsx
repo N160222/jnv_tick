@@ -32,7 +32,8 @@ import ManualTestCreationPage from './pages/ManualTestCreationPage';
 import QuestionBankPage from './pages/QuestionBankPage';
 import StudentReportsPerformancePage from './pages/StudentReportsPerformancePage';
 import AdminAnalyticsDashboardPage from './pages/AdminAnalyticsDashboardPage';
-import StudentComparisonPage from './pages/StudentComparisonPage'; // Import new Student Comparison Page
+import StudentComparisonPage from './pages/StudentComparisonPage';
+import AdminNotificationsPage from './pages/AdminNotificationsPage'; // Import new Admin Notifications Page
 
 const HomePage = () => (
   <div className="bg-slate-950 text-slate-200 font-sans antialiased">
@@ -82,7 +83,8 @@ function App() {
         <Route path="/admin/question-bank" element={<QuestionBankPage />} />
         <Route path="/admin/student-reports-performance" element={<StudentReportsPerformancePage />} />
         <Route path="/admin/analytics-dashboard" element={<AdminAnalyticsDashboardPage />} />
-        <Route path="/admin/student-comparison" element={<StudentComparisonPage />} /> {/* New route */}
+        <Route path="/admin/student-comparison" element={<StudentComparisonPage />} />
+        <Route path="/admin/notifications-announcements" element={<AdminNotificationsPage />} /> {/* New route */}
         <Route path="/forgot-password" element={
             <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
                 <Header />
