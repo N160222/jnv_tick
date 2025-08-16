@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LogOut, Bell } from 'lucide-react'; // Removed Settings icon as it's now part of Profile
+import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award } from 'lucide-react'; // Added admin-related icons
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -8,8 +8,11 @@ const Header = () => {
     const [language, setLanguage] = useState('EN');
     const location = useLocation();
 
+    // Determine if the current path is an admin path
+    const isAdminPath = location.pathname.startsWith('/admin-dashboard') || location.pathname.startsWith('/admin/');
+
     // Updated isDashboard check to include /settings as a dashboard-related page
-    const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/profile') || location.pathname.startsWith('/mock-tests') || location.pathname.startsWith('/test-interface') || location.pathname.startsWith('/results') || location.pathname.startsWith('/review-answers') || location.pathname.startsWith('/leaderboard') || location.pathname.startsWith('/notifications') || location.pathname.startsWith('/settings') || location.pathname.startsWith('/help-support') || location.pathname.startsWith('/rewards-badges');
+    const isStudentDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/profile') || location.pathname.startsWith('/mock-tests') || location.pathname.startsWith('/test-interface') || location.pathname.startsWith('/results') || location.pathname.startsWith('/review-answers') || location.pathname.startsWith('/leaderboard') || location.pathname.startsWith('/notifications') || location.pathname.startsWith('/settings') || location.pathname.startsWith('/help-support') || location.pathname.startsWith('/rewards-badges');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -23,7 +26,13 @@ const Header = () => {
         setLanguage(lang => lang === 'EN' ? 'TE' : 'EN');
     };
 
-    const navLinks = isDashboard ? [
+    const navLinks = isAdminPath ? [
+        { name: "Dashboard", href: "/admin-dashboard", icon: <LayoutDashboard size={18} className="mr-2" /> },
+        { name: "Manage Students", href: "/admin/manage-students", icon: <Users size={18} className="mr-2" /> },
+        { name: "Manage Tests", href: "/admin/manage-tests", icon: <BookOpen size={18} className="mr-2" /> },
+        { name: "Results & Reports", href: "/admin/results-reports", icon: <BarChart size={18} className="mr-2" /> },
+        { name: "Rewards & Leaderboard", href: "/admin/rewards-leaderboard", icon: <Award size={18} className="mr-2" /> },
+    ] : isStudentDashboard ? [
         { name: "Mock Tests", href: "/mock-tests" },
         { name: "Study Plan", href: "/study-plan" },
         { name: "Leaderboard", href: "/leaderboard" },
@@ -41,28 +50,28 @@ const Header = () => {
         <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-950/80 backdrop-blur-lg border-b border-slate-800' : 'bg-transparent'}`}>
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
-                    <Link to={isDashboard ? "/dashboard" : "/"} className="flex-shrink-0">
+                    <Link to={isAdminPath ? "/admin-dashboard" : isStudentDashboard ? "/dashboard" : "/"} className="flex-shrink-0">
                         <h1 className="text-2xl font-bold text-white tracking-wider glow-text">
                             Navodaya <span className="text-cyan-400">AI</span> Prep
                         </h1>
                     </Link>
                     <div className="hidden md:flex md:items-center md:space-x-8">
                         {navLinks.map(link => (
-                            <Link key={link.name} to={link.href} className="text-slate-300 hover:text-cyan-400 transition-colors duration-200">
+                            <Link key={link.name} to={link.href} className="text-slate-300 hover:text-cyan-400 transition-colors duration-200 flex items-center">
+                                {link.icon && link.icon} {/* Render icon if available */}
                                 {link.name}
                             </Link>
                         ))}
                     </div>
                     <div className="hidden md:flex items-center space-x-4">
-                        {!isDashboard && <button onClick={toggleLanguage} className="border border-slate-600 px-3 py-1.5 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">{language === 'EN' ? 'Telugu' : 'English'}</button>}
-                        {isDashboard ? (
+                        {!isStudentDashboard && !isAdminPath && <button onClick={toggleLanguage} className="border border-slate-600 px-3 py-1.5 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">{language === 'EN' ? 'Telugu' : 'English'}</button>}
+                        {isStudentDashboard && (
                              <>
                                 <Link to="/notifications" className="relative text-slate-300 hover:text-white transition-colors">
                                     <Bell size={24} />
                                     {/* Static unread indicator */}
                                     <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full animate-ping-slow"></span>
                                 </Link>
-                                {/* Removed direct Settings link, now accessed via Profile dropdown */}
                                 <div className="relative group">
                                     <button className="flex items-center space-x-2 focus:outline-none">
                                         <img className="h-8 w-8 rounded-full" src="https://i.pravatar.cc/40" alt="User avatar" />
@@ -70,14 +79,20 @@ const Header = () => {
                                         <svg className="h-5 w-5 text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
                                     </button>
                                     <div className="absolute right-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right scale-95 group-hover:scale-100">
-                                        <Link to="/settings" className="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-white">My Profile & Settings</Link> {/* Link to new P15 */}
+                                        <Link to="/settings" className="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-white">My Profile & Settings</Link>
                                         <button onClick={() => alert('Logging out...')} className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-slate-800 hover:text-red-300 flex items-center">
                                             <LogOut size={16} className="mr-2" /> Logout
                                         </button>
                                     </div>
                                 </div>
                             </>
-                        ) : (
+                        )}
+                        {isAdminPath && (
+                            <button onClick={() => alert('Admin Logging out...')} className="px-4 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition-colors flex items-center">
+                                <LogOut size={18} className="mr-2" /> Logout
+                            </button>
+                        )}
+                        {!isStudentDashboard && !isAdminPath && (
                             <>
                                 <Link to="/auth" className="text-slate-300 hover:text-white transition-colors">Login</Link>
                                 <Link to="/auth" className="px-4 py-2 bg-cyan-500 text-slate-900 font-semibold rounded-md hover:bg-cyan-400 transition-all duration-200 transform hover:scale-105">Sign Up</Link>
@@ -96,24 +111,29 @@ const Header = () => {
                     <div className="md:hidden pb-4">
                         <div className="flex flex-col space-y-4">
                             {navLinks.map(link => (
-                                <Link key={link.name} to={link.href} className="text-slate-300 hover:text-cyan-400 transition-colors duration-200 block px-2 py-1">
+                                <Link key={link.name} to={link.href} className="text-slate-300 hover:text-cyan-400 transition-colors duration-200 block px-2 py-1 flex items-center">
+                                    {link.icon && link.icon}
                                     {link.name}
                                 </Link>
                             ))}
                             <div className="border-t border-slate-800 pt-4 flex flex-col space-y-4">
-                            {isDashboard ? (
+                            {isStudentDashboard ? (
                                 <>
                                     <Link to="/notifications" className="text-slate-300 hover:text-white flex items-center px-2 py-1">
                                         <Bell size={18} className="mr-2" /> Notifications
                                         <span className="ml-2 h-2 w-2 bg-red-500 rounded-full animate-ping-slow"></span>
                                     </Link>
-                                    <Link to="/settings" className="text-slate-300 hover:text-white flex items-center px-2 py-1"> {/* Link to new P15 */}
-                                        <User size={18} className="mr-2" /> My Profile & Settings
+                                    <Link to="/settings" className="text-slate-300 hover:text-white flex items-center px-2 py-1">
+                                        <Users size={18} className="mr-2" /> My Profile & Settings
                                     </Link>
                                     <button onClick={() => alert('Logging out...')} className="w-full text-left text-slate-300 hover:text-white flex items-center px-2 py-1">
                                         <LogOut size={18} className="mr-2" /> Logout
                                     </button>
                                 </>
+                            ) : isAdminPath ? (
+                                <button onClick={() => alert('Admin Logging out...')} className="w-full text-left text-slate-300 hover:text-white flex items-center px-2 py-1">
+                                    <LogOut size={18} className="mr-2" /> Logout
+                                </button>
                             ) : (
                                 <>
                                     <Link to="/auth" className="text-slate-300 hover:text-white">Login</Link>

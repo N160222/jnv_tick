@@ -18,7 +18,8 @@ import StudentProfilePage from './pages/StudentProfilePage';
 import NotificationsPage from './pages/NotificationsPage';
 import SettingsPage from './pages/SettingsPage';
 import HelpSupportPage from './pages/HelpSupportPage';
-import RewardsBadgesPage from './pages/RewardsBadgesPage'; // Import the new page
+import RewardsBadgesPage from './pages/RewardsBadgesPage';
+import AdminDashboardPage from './pages/AdminDashboardPage'; // Import the new Admin Dashboard page
 
 const HomePage = () => (
   <div className="bg-slate-950 text-slate-200 font-sans antialiased">
@@ -54,7 +55,13 @@ function App() {
         <Route path="/notifications" element={<NotificationsPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/help-support" element={<HelpSupportPage />} />
-        <Route path="/rewards-badges" element={<RewardsBadgesPage />} /> {/* New route for rewards & badges */}
+        <Route path="/rewards-badges" element={<RewardsBadgesPage />} />
+        <Route path="/admin-dashboard" element={<AdminDashboardPage />} /> {/* New route for Admin Dashboard */}
+        {/* Admin sub-pages (placeholders for now) */}
+        <Route path="/admin/manage-students" element={<AdminDashboardPage />} />
+        <Route path="/admin/manage-tests" element={<AdminDashboardPage />} />
+        <Route path="/admin/results-reports" element={<AdminDashboardPage />} />
+        <Route path="/admin/rewards-leaderboard" element={<AdminDashboardPage />} />
         <Route path="/forgot-password" element={
             <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
                 <Header />
