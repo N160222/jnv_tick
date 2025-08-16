@@ -116,6 +116,12 @@ const TestResultsPage = () => {
                                 Try Another Test
                             </Link>
                             <Link
+                                to="/leaderboard" // New link to Leaderboard
+                                className="w-full sm:w-auto text-center px-8 py-4 border border-purple-600 text-purple-300 font-semibold rounded-lg hover:bg-purple-900/30 hover:text-white transition-colors duration-200"
+                            >
+                                View Leaderboard
+                            </Link>
+                            <Link
                                 to="/dashboard"
                                 className="w-full sm:w-auto text-center px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-lg hover:bg-slate-800 hover:text-white transition-colors duration-200"
                             >

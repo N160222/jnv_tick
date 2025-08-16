@@ -12,7 +12,8 @@ import StudentDashboard from './pages/StudentDashboard';
 import MockTestListPage from './pages/MockTestListPage';
 import TestTakingInterface from './pages/TestTakingInterface';
 import TestResultsPage from './pages/TestResultsPage';
-import ReviewAnswersPage from './pages/ReviewAnswersPage'; // Import the new page
+import ReviewAnswersPage from './pages/ReviewAnswersPage';
+import LeaderboardPage from './pages/LeaderboardPage'; // Import the new page
 
 const HomePage = () => (
   <div className="bg-slate-950 text-slate-200 font-sans antialiased">
@@ -42,7 +43,8 @@ function App() {
         <Route path="/mock-tests" element={<MockTestListPage />} />
         <Route path="/test-interface" element={<TestTakingInterface />} />
         <Route path="/results" element={<TestResultsPage />} />
-        <Route path="/review-answers" element={<ReviewAnswersPage />} /> {/* New route for review answers */}
+        <Route path="/review-answers" element={<ReviewAnswersPage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} /> {/* New route for leaderboard */}
         <Route path="/forgot-password" element={
             <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
                 <Header />
