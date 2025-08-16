@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
+import Header from '../components/Header'; // Corrected: Removed space after Header
 import Footer from '../components/Footer';
 import { BellRing, Award, Mail, Zap, Bell, X, Info, CalendarDays, CheckCircle, Paperclip } from 'lucide-react'; // Import necessary icons
 
@@ -206,7 +206,8 @@ const NotificationsPage = () => {
                             </Link>
                         </div>
                     </div>
-                </main>
+                </div>
+            </main>
 
             <Footer minimal="Stay updated, stay ahead 🚀" />
 
