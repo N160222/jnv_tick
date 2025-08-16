@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CreateAnnouncementModal from '../components/CreateAnnouncementModal';
-import { BellRing, PlusCircle, Edit, Trash2, Eye, Search, Filter, ChevronDown, X, CalendarDays, Users, Layers, User, Activity, TrendingUp, BarChart } from 'lucide-react';
+import { BellRing, PlusCircle, Edit, Trash2, Eye, Search, Filter, ChevronDown, X, CalendarDays, Users, Layers, User, Activity, TrendingUp, BarChart, Clock } from 'lucide-react'; // Added Clock
 
 // Mock Data for Announcements
 const initialAnnouncements = [
@@ -401,7 +401,7 @@ const AdminNotificationsPage = () => {
                             </div>
                         ) : (
                             <div className="glass-effect rounded-2xl p-12 text-center animate-fade-in-up" style={{ animationDelay: '600ms' }}>
-                                <BellRing size={64} className="text-cyan-400 mx-auto mb-6 animate-pulse-slow" />
+                                <BellRing size={64} className="mx-auto mb-6 animate-pulse-slow" />
                                 <h2 className="text-2xl font-bold text-white mb-3">No announcements yet.</h2>
                                 <p className="text-slate-400 max-w-md mx-auto">All your important updates and notifications will appear here.</p>
                                 <button
