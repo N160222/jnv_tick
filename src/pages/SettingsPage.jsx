@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { User, Lock, Settings, Sun, Moon, Bell, Globe, ChevronDown, CheckCircle, XCircle, Award, BarChart } from 'lucide-react';
+import { User, Lock, Settings, Sun, Moon, Bell, Globe, ChevronDown, CheckCircle, XCircle, Award, BarChart, Mail, Clock, Sparkles } from 'lucide-react';
 
 const SettingsPage = () => {
     const navigate = useNavigate();
