@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Users, BookOpen, BarChart, Gift, Activity, PlusCircle, FileText, Award, LayoutDashboard } from 'lucide-react';
+import { Users, BookOpen, BarChart, Gift, Activity, PlusCircle, FileText, Award, LayoutDashboard, Brain } from 'lucide-react'; // Added Brain icon
 
 // Mock Data
 const quickStats = [
@@ -124,6 +124,10 @@ const AdminDashboardPage = () => {
                                     <Link to="/admin/manage-tests" className="flex items-center p-4 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition-colors group">
                                         <BookOpen size={20} className="mr-3 text-green-400 group-hover:text-green-300" />
                                         <span className="font-medium text-white group-hover:text-cyan-400">Create New Test</span>
+                                    </Link>
+                                    <Link to="/admin/ai-test-generation" className="flex items-center p-4 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition-colors group">
+                                        <Brain size={20} className="mr-3 text-yellow-400 group-hover:text-yellow-300" />
+                                        <span className="font-medium text-white group-hover:text-cyan-400">AI Test Generation</span>
                                     </Link>
                                     <Link to="/admin/manage-students" className="flex items-center p-4 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition-colors group">
                                         <Users size={20} className="mr-3 text-blue-400 group-hover:text-blue-300" />
