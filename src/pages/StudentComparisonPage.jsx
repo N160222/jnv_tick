@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Users, BarChart, LineChart, TrendingUp, Award, CalendarDays, BookOpen, Search, Filter, ChevronDown, PlusCircle, Download, LayoutDashboard, ArrowLeft, Brain, User as UserIcon, Layers, Scale, Clock } from 'lucide-react';
+import { Users, BarChart, LineChart, TrendingUp, Award, CalendarDays, BookOpen, Search, Filter, ChevronDown, PlusCircle, Download, LayoutDashboard, ArrowLeft, Brain, User as UserIcon, Layers, Scale, Clock, X } from 'lucide-react';
 
 // --- Mock Data ---
 const mockStudentsData = [
