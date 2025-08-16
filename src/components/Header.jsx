@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award, Brain, ClipboardList, SquarePen, ListChecks } from 'lucide-react';
+import { LogOut, Bell, LayoutDashboard, Users, BookOpen, BarChart, Award, Brain, ClipboardList, SquarePen, ListChecks, TrendingUp } from 'lucide-react'; // Added TrendingUp icon for reports
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +34,7 @@ const Header = () => {
         { name: "AI Test Templates", href: "/admin/ai-test-templates", icon: <ClipboardList size={18} className="mr-2" /> },
         { name: "Manual Test Creation", href: "/admin/manual-test-creation", icon: <SquarePen size={18} className="mr-2" /> },
         { name: "Question Bank", href: "/admin/question-bank", icon: <ListChecks size={18} className="mr-2" /> },
+        { name: "Student Reports & Performance", href: "/admin/student-reports-performance", icon: <TrendingUp size={18} className="mr-2" /> }, {/* New link */}
         { name: "Results & Reports", href: "/admin/results-reports", icon: <BarChart size={18} className="mr-2" /> },
         { name: "Rewards & Leaderboard", href: "/admin/rewards-leaderboard", icon: <Award size={18} className="mr-2" /> },
     ] : isStudentDashboard ? [

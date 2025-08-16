@@ -29,7 +29,8 @@ import StudentPerformanceReportPage from './pages/StudentPerformanceReportPage';
 import AITestGenerationPage from './pages/AITestGenerationPage';
 import AITestTemplatesPage from './pages/AITestTemplatesPage';
 import ManualTestCreationPage from './pages/ManualTestCreationPage';
-import QuestionBankPage from './pages/QuestionBankPage'; // Import new Question Bank Page
+import QuestionBankPage from './pages/QuestionBankPage';
+import StudentReportsPerformancePage from './pages/StudentReportsPerformancePage'; // Import new Student Reports & Performance Page
 
 const HomePage = () => (
   <div className="bg-slate-950 text-slate-200 font-sans antialiased">
@@ -76,7 +77,8 @@ function App() {
         <Route path="/admin/ai-test-generation" element={<AITestGenerationPage />} />
         <Route path="/admin/ai-test-templates" element={<AITestTemplatesPage />} />
         <Route path="/admin/manual-test-creation" element={<ManualTestCreationPage />} />
-        <Route path="/admin/question-bank" element={<QuestionBankPage />} /> {/* New route */}
+        <Route path="/admin/question-bank" element={<QuestionBankPage />} />
+        <Route path="/admin/student-reports-performance" element={<StudentReportsPerformancePage />} /> {/* New route */}
         <Route path="/forgot-password" element={
             <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center font-sans">
                 <Header />
