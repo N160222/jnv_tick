@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LogOut, Bell, Settings } from 'lucide-react'; // Import Settings icon
+import { LogOut, Bell } from 'lucide-react'; // Removed Settings icon as it's now part of Profile
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +8,8 @@ const Header = () => {
     const [language, setLanguage] = useState('EN');
     const location = useLocation();
 
-    const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/profile') || location.pathname.startsWith('/mock-tests') || location.pathname.startsWith('/test-interface') || location.pathname.startsWith('/results') || location.pathname.startsWith('/review-answers') || location.pathname.startsWith('/leaderboard') || location.pathname.startsWith('/notifications') || location.pathname.startsWith('/settings') || location.pathname.startsWith('/help-support') || location.pathname.startsWith('/rewards-badges'); // Added /rewards-badges
+    // Updated isDashboard check to include /settings as a dashboard-related page
+    const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/profile') || location.pathname.startsWith('/mock-tests') || location.pathname.startsWith('/test-interface') || location.pathname.startsWith('/results') || location.pathname.startsWith('/review-answers') || location.pathname.startsWith('/leaderboard') || location.pathname.startsWith('/notifications') || location.pathname.startsWith('/settings') || location.pathname.startsWith('/help-support') || location.pathname.startsWith('/rewards-badges');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -28,7 +29,7 @@ const Header = () => {
         { name: "Leaderboard", href: "/leaderboard" },
         { name: "AI Tutor", href: "/ai-tutor" },
         { name: "Help & Support", href: "/help-support" },
-        { name: "Rewards & Badges", href: "/rewards-badges" }, // Added Rewards & Badges link
+        { name: "Rewards & Badges", href: "/rewards-badges" },
     ] : [
         { name: "Home", href: "/" },
         { name: "About", href: "/about" },
@@ -61,9 +62,7 @@ const Header = () => {
                                     {/* Static unread indicator */}
                                     <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full animate-ping-slow"></span>
                                 </Link>
-                                <Link to="/settings" className="text-slate-300 hover:text-white transition-colors">
-                                    <Settings size={24} />
-                                </Link>
+                                {/* Removed direct Settings link, now accessed via Profile dropdown */}
                                 <div className="relative group">
                                     <button className="flex items-center space-x-2 focus:outline-none">
                                         <img className="h-8 w-8 rounded-full" src="https://i.pravatar.cc/40" alt="User avatar" />
@@ -71,7 +70,7 @@ const Header = () => {
                                         <svg className="h-5 w-5 text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
                                     </button>
                                     <div className="absolute right-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right scale-95 group-hover:scale-100">
-                                        <Link to="/profile" className="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-white">My Profile</Link>
+                                        <Link to="/settings" className="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-white">My Profile & Settings</Link> {/* Link to new P15 */}
                                         <button onClick={() => alert('Logging out...')} className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-slate-800 hover:text-red-300 flex items-center">
                                             <LogOut size={16} className="mr-2" /> Logout
                                         </button>
@@ -108,10 +107,9 @@ const Header = () => {
                                         <Bell size={18} className="mr-2" /> Notifications
                                         <span className="ml-2 h-2 w-2 bg-red-500 rounded-full animate-ping-slow"></span>
                                     </Link>
-                                    <Link to="/settings" className="text-slate-300 hover:text-white flex items-center px-2 py-1">
-                                        <Settings size={18} className="mr-2" /> Settings
+                                    <Link to="/settings" className="text-slate-300 hover:text-white flex items-center px-2 py-1"> {/* Link to new P15 */}
+                                        <User size={18} className="mr-2" /> My Profile & Settings
                                     </Link>
-                                    <Link to="/profile" className="text-slate-300 hover:text-white">My Account</Link>
                                     <button onClick={() => alert('Logging out...')} className="w-full text-left text-slate-300 hover:text-white flex items-center px-2 py-1">
                                         <LogOut size={18} className="mr-2" /> Logout
                                     </button>

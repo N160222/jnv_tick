@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { User, Lock, Settings, Sun, Moon, Bell, Globe, ChevronDown, CheckCircle, XCircle } from 'lucide-react'; // Added ChevronDown
+import { User, Lock, Settings, Sun, Moon, Bell, Globe, ChevronDown, CheckCircle, XCircle, Award, BarChart } from 'lucide-react';
 
 const SettingsPage = () => {
     const navigate = useNavigate();
@@ -15,6 +15,8 @@ const SettingsPage = () => {
         name: "Anusha Sharma",
         email: "anusha.sharma@example.com",
         phone: "9876543210",
+        classGrade: "Class 6", // New field
+        schoolCollege: "JNV Hyderabad", // New field
         avatar: "https://i.pravatar.cc/150?img=48"
     });
     const [password, setPassword] = useState({
@@ -23,8 +25,10 @@ const SettingsPage = () => {
         confirm: ''
     });
     const [preferences, setPreferences] = useState({
-        theme: 'dark', // 'light' or 'dark'
-        notifications: true,
+        theme: 'dark', // 'light', 'dark', 'ai-glow'
+        emailNotifications: true, // Specific notification
+        testReminders: true, // Specific notification
+        rewardAlerts: true, // Specific notification
         language: 'English'
     });
 
@@ -83,16 +87,38 @@ const SettingsPage = () => {
                 name: "Anusha Sharma",
                 email: "anusha.sharma@example.com",
                 phone: "9876543210",
+                classGrade: "Class 6",
+                schoolCollege: "JNV Hyderabad",
                 avatar: "https://i.pravatar.cc/150?img=48"
             });
             setPreferences({
                 theme: 'dark',
-                notifications: true,
+                emailNotifications: true,
+                testReminders: true,
+                rewardAlerts: true,
                 language: 'English'
             });
             showPopup("Settings reset to defaults!");
         }
     };
+
+    const ToggleSwitch = ({ label, icon, checked, onChange }) => (
+        <div className="flex items-center justify-between">
+            <label htmlFor={`${label}-toggle`} className="text-slate-300 flex items-center">
+                {icon}
+                {label}
+            </label>
+            <button
+                type="button"
+                onClick={onChange}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${checked ? 'bg-blue-600' : 'bg-gray-200 focus:ring-gray-500'}`}
+            >
+                <span
+                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${checked ? 'translate-x-6' : 'translate-x-1'}`}
+                />
+            </button>
+        </div>
+    );
 
     return (
         <div className="bg-slate-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col relative overflow-hidden">
@@ -103,8 +129,9 @@ const SettingsPage = () => {
             {isDesktop && (
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 flex items-center justify-center z-0 opacity-20 animate-pulse-slow">
                     <div className="relative w-full h-full">
+                        <img src="https://storage.googleapis.com/pai-images/468095b9227c4b77a5840b106201b2f7.jpeg" alt="AI teacher hologram" className="max-w-[150px] mx-auto rounded-full shadow-lg" />
                         <Settings size={128} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-cyan-400 animate-spin-slow" style={{ animationDuration: '15s' }} />
-                        <Lock size={96} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-blue-500 animate-spin-reverse-slow" style={{ animationDuration: '10s' }} />
+                        <User size={96} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-blue-500 animate-spin-reverse-slow" style={{ animationDuration: '10s' }} />
                     </div>
                 </div>
             )}
@@ -115,18 +142,18 @@ const SettingsPage = () => {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
                     <div className="w-full max-w-3xl animate-fade-in-up">
                         <div className="mb-8 text-center">
-                            <h1 className="text-3xl sm:text-4xl font-extrabold text-white">Settings</h1>
-                            <p className="mt-2 text-lg text-slate-400">Manage your account preferences and app settings.</p>
+                            <h1 className="text-3xl sm:text-4xl font-extrabold text-white">👤 My Profile & Settings</h1>
+                            <p className="mt-2 text-lg text-slate-400">Manage your personal information and preferences.</p>
                         </div>
 
                         {/* Profile Settings */}
                         <div className="glass-effect rounded-2xl p-6 sm:p-8 mb-8">
-                            <h2 className="text-xl font-bold text-white mb-6 flex items-center"><User size={24} className="mr-3 text-cyan-400" /> Profile Settings</h2>
+                            <h2 className="text-xl font-bold text-white mb-6 flex items-center"><User size={24} className="mr-3 text-cyan-400" /> Profile Information</h2>
                             <form onSubmit={handleProfileSave} className="space-y-6">
                                 <div className="flex flex-col sm:flex-row items-center gap-6">
                                     <div className="flex-shrink-0">
                                         <img src={profile.avatar} alt="Avatar" className="w-24 h-24 rounded-full border-4 border-slate-700" />
-                                        <button className="mt-2 text-sm text-cyan-400 hover:underline">Change Avatar (Mock)</button>
+                                        <button type="button" className="mt-2 text-sm text-cyan-400 hover:underline">Change Avatar (Mock)</button>
                                     </div>
                                     <div className="flex-grow w-full space-y-4">
                                         <div>
@@ -159,6 +186,26 @@ const SettingsPage = () => {
                                                 onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
                                             />
                                         </div>
+                                        <div>
+                                            <label htmlFor="classGrade" className="block text-sm font-medium text-slate-300 mb-2">Class/Grade</label>
+                                            <input
+                                                type="text"
+                                                id="classGrade"
+                                                className="w-full bg-slate-800 border border-slate-700 rounded-md p-3 text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"
+                                                value={profile.classGrade}
+                                                onChange={(e) => setProfile({ ...profile, classGrade: e.target.value })}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="schoolCollege" className="block text-sm font-medium text-slate-300 mb-2">School/College</label>
+                                            <input
+                                                type="text"
+                                                id="schoolCollege"
+                                                className="w-full bg-slate-800 border border-slate-700 rounded-md p-3 text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"
+                                                value={profile.schoolCollege}
+                                                onChange={(e) => setProfile({ ...profile, schoolCollege: e.target.value })}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                                 <button type="submit" className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-900 font-semibold rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105">
@@ -169,7 +216,7 @@ const SettingsPage = () => {
 
                         {/* Password & Security */}
                         <div className="glass-effect rounded-2xl p-6 sm:p-8 mb-8">
-                            <h2 className="text-xl font-bold text-white mb-6 flex items-center"><Lock size={24} className="mr-3 text-purple-400" /> Password & Security</h2>
+                            <h2 className="text-xl font-bold text-white mb-6 flex items-center"><Lock size={24} className="mr-3 text-purple-400" /> Account Settings</h2>
                             <form onSubmit={handlePasswordUpdate} className="space-y-4">
                                 <div>
                                     <label htmlFor="current-password" className="block text-sm font-medium text-slate-300 mb-2">Current Password</label>
@@ -205,41 +252,53 @@ const SettingsPage = () => {
                                     Update Password
                                 </button>
                             </form>
+                            <div className="mt-6 text-slate-400 text-sm">
+                                <p>Manage login method: <span className="font-semibold text-white">Email/Google Login (Mock)</span></p>
+                            </div>
                         </div>
 
                         {/* App Preferences */}
                         <div className="glass-effect rounded-2xl p-6 sm:p-8 mb-8">
-                            <h2 className="text-xl font-bold text-white mb-6 flex items-center"><Settings size={24} className="mr-3 text-yellow-400" /> App Preferences</h2>
+                            <h2 className="text-xl font-bold text-white mb-6 flex items-center"><Settings size={24} className="mr-3 text-yellow-400" /> Customization & Preferences</h2>
                             <form onSubmit={handlePreferencesSave} className="space-y-6">
-                                <div className="flex items-center justify-between">
-                                    <label htmlFor="theme-toggle" className="text-slate-300 flex items-center">
-                                        {preferences.theme === 'dark' ? <Moon size={20} className="mr-2 text-blue-400" /> : <Sun size={20} className="mr-2 text-yellow-400" />}
-                                        Theme: {preferences.theme === 'dark' ? 'Dark' : 'Light'}
+                                <div>
+                                    <label htmlFor="theme" className="block text-sm font-medium text-slate-300 mb-2 flex items-center">
+                                        {preferences.theme === 'dark' ? <Moon size={20} className="mr-2 text-blue-400" /> : preferences.theme === 'light' ? <Sun size={20} className="mr-2 text-yellow-400" /> : <Sparkles size={20} className="mr-2 text-pink-400" />}
+                                        Theme Preference
                                     </label>
-                                    <button
-                                        type="button"
-                                        onClick={() => setPreferences({ ...preferences, theme: preferences.theme === 'dark' ? 'light' : 'dark' })}
-                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${preferences.theme === 'dark' ? 'bg-blue-600' : 'bg-gray-200 focus:ring-gray-500'}`}
-                                    >
-                                        <span
-                                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${preferences.theme === 'dark' ? 'translate-x-6' : 'translate-x-1'}`}
-                                        />
-                                    </button>
+                                    <div className="relative">
+                                        <select
+                                            id="theme"
+                                            className="appearance-none w-full bg-slate-800 border border-slate-700 rounded-md py-3 pl-4 pr-10 text-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition"
+                                            value={preferences.theme}
+                                            onChange={(e) => setPreferences({ ...preferences, theme: e.target.value })}
+                                        >
+                                            <option value="dark">Dark Mode</option>
+                                            <option value="light">Light Mode (Mock)</option>
+                                            <option value="ai-glow">Futuristic AI Glow Mode (Mock)</option>
+                                        </select>
+                                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={20} />
+                                    </div>
                                 </div>
-                                <div className="flex items-center justify-between">
-                                    <label htmlFor="notifications-toggle" className="text-slate-300 flex items-center">
-                                        <Bell size={20} className="mr-2 text-green-400" /> Notifications
-                                    </label>
-                                    <button
-                                        type="button"
-                                        onClick={() => setPreferences({ ...preferences, notifications: !preferences.notifications })}
-                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${preferences.notifications ? 'bg-green-600' : 'bg-gray-200 focus:ring-gray-500'}`}
-                                    >
-                                        <span
-                                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${preferences.notifications ? 'translate-x-6' : 'translate-x-1'}`}
-                                        />
-                                    </button>
-                                </div>
+                                <h3 className="text-lg font-bold text-white mt-8 mb-4 flex items-center"><Bell size={20} className="mr-2 text-green-400" /> Notification Preferences</h3>
+                                <ToggleSwitch
+                                    label="Email Notifications"
+                                    icon={<Mail size={20} className="mr-2 text-green-400" />}
+                                    checked={preferences.emailNotifications}
+                                    onChange={() => setPreferences({ ...preferences, emailNotifications: !preferences.emailNotifications })}
+                                />
+                                <ToggleSwitch
+                                    label="Test Reminders"
+                                    icon={<Clock size={20} className="mr-2 text-green-400" />}
+                                    checked={preferences.testReminders}
+                                    onChange={() => setPreferences({ ...preferences, testReminders: !preferences.testReminders })}
+                                />
+                                <ToggleSwitch
+                                    label="Reward Alerts"
+                                    icon={<Award size={20} className="mr-2 text-green-400" />}
+                                    checked={preferences.rewardAlerts}
+                                    onChange={() => setPreferences({ ...preferences, rewardAlerts: !preferences.rewardAlerts })}
+                                />
                                 <div>
                                     <label htmlFor="language" className="block text-sm font-medium text-slate-300 mb-2 flex items-center">
                                         <Globe size={20} className="mr-2 text-orange-400" /> Language
@@ -271,6 +330,18 @@ const SettingsPage = () => {
                                 className="w-full sm:w-auto text-center px-8 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-600 transition-colors duration-200"
                             >
                                 Back to Dashboard
+                            </Link>
+                            <Link
+                                to="/results"
+                                className="w-full sm:w-auto text-center px-8 py-3 border border-purple-600 text-purple-300 font-semibold rounded-lg hover:bg-purple-900/30 hover:text-white transition-colors duration-200"
+                            >
+                                View My Results
+                            </Link>
+                            <Link
+                                to="/rewards-badges"
+                                className="w-full sm:w-auto text-center px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-900 font-semibold rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105"
+                            >
+                                View Rewards & Badges
                             </Link>
                             <button
                                 onClick={handleResetDefaults}
